@@ -6,12 +6,29 @@ using UnityEngine;
 
 public class HexManager : SingletonMonoBehaviour<HexManager>
 {
+    /// <summary>
+    /// マスのプレハブ
+    /// </summary>
     [SerializeField]
     Hex pfHex;
 
+    /// <summary>
+    /// 一辺の長さ
+    /// </summary>
     public readonly int SIDE_LENGTH = 15;
 
+    /// <summary>
+    /// マスリスト
+    /// </summary>
     private List<Hex> hexList = new List<Hex>();
+
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    public void Initialize()
+    {
+        hexList.Clear();
+    }
 
     /// <summary>
     /// 駒を初期状態に配置する
@@ -23,8 +40,6 @@ public class HexManager : SingletonMonoBehaviour<HexManager>
             Debug.LogError("SIDE_LENGTHは3の倍数かつ9以上の値にしてください。");
             return;
         }
-
-        hexList.Clear();
 
         // ピラミット上に配置
         for (int i = 0; i < SIDE_LENGTH; i++)
@@ -95,6 +110,12 @@ public class HexManager : SingletonMonoBehaviour<HexManager>
         hexCenter20.SetSchool(Kivotos.ESchool.Gehenna);
     }
 
+    /// <summary>
+    /// マス取得
+    /// </summary>
+    /// <param name="x">ゲーム内位置X</param>
+    /// <param name="y">ゲーム内位置Y</param>
+    /// <returns></returns>
     public Hex GetHex(int x, int y)
     {
         return hexList.FirstOrDefault(h => h.InGamePos.x == x && h.InGamePos.y == y);

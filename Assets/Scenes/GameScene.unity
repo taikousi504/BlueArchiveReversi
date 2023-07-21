@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 1770041528}
   - component: {fileID: 1770041529}
   m_Layer: 0
-  m_Name: SelectObject
+  m_Name: ClickObjectManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
