@@ -1,3 +1,4 @@
+using Kivotos;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,5 +120,15 @@ public class HexManager : SingletonMonoBehaviour<HexManager>
     public Hex GetHex(int x, int y)
     {
         return hexList.FirstOrDefault(h => h.InGamePos.x == x && h.InGamePos.y == y);
+    }
+
+    /// <summary>
+    /// 学校ごとのマスを全取得
+    /// </summary>
+    /// <param name="school">学校</param>
+    /// <returns></returns>
+    public List<Hex> GetHexs(ESchool school)
+    {
+        return hexList.Where(x => x.NowSchool == school).ToList();
     }
 }
